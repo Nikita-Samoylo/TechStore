@@ -3,6 +3,7 @@ import CatalogPage from './pages/CatalogPage';
 import ProductPage from './pages/ProductPage';
 import CartPage from './pages/CartPage';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
       </Routes>
       </main>
+      <Footer /> 
     </div>
   );
 }
