@@ -1,0 +1,119 @@
+.product-card {
+  height: 420.34px;
+  width: 293.33px;
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  padding: 1px; 
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.product-card:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1); 
+  border-color: #D1D5DB;
+}
+
+.product-card__image-container {
+  width: 100%;
+  height: 291px; 
+  background-color: #F3F4F6;
+  border-radius: 9px 9px 0 0; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.product-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply; 
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-card__image {
+  transform: scale(1.05);
+}
+
+.product-card__content {
+  height: 127px;
+  width: 100%;
+  padding: 16px; 
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.product-card__title {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: -0.44px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-card__title a {
+  color: #0A0A0A;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.product-card__title a:hover {
+  color: #0A0A0A; 
+}
+
+.product-card__rating {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.product-card__rating-num {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #4A5565;
+}
+
+.product-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto; 
+}
+
+.product-card__price {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;   
+  font-size: 18px;    
+  line-height: 28px;  
+  color: #155DFC;     
+  white-space: nowrap;
+  font-style: Bold;
+  letter-spacing: -0.44px;
+}
+
+.product-card__category {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-style: Regular;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+}

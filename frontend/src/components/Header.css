@@ -15,9 +15,11 @@
 
 .header_container {
   width: 100%;
-  max-width: 1440px; 
-  padding: 0 20px;
+  max-width: 1280px; 
+  height: 64px;
+  padding: 0 32px;
   height: 100%;
+  margin: 0 auto;
 }
 
 .header_wrapper {
@@ -30,7 +32,7 @@
 .header_logo {
   display: flex;
   align-items: center;
-  gap: 12px; 
+  gap: 8px; 
   text-decoration: none;
 }
 
@@ -38,13 +40,17 @@
   width: 40px; 
   height: 40px;
   background: linear-gradient(135deg, #155DFC 0%, #9810FA 100%);
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
   font-size: 20px;
-  color: white;
+  color: #FFFFFF; 
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  line-height: 28px;
+  letter-spacing: -0.45px;
 }
 
 .header_logo-text {
@@ -54,6 +60,7 @@
   line-height: 28px;
   letter-spacing: -0.45px;
   color: #0A0A0A;
+  font-style: Bold;
 }
 
 .header_nav {
@@ -70,6 +77,7 @@
   letter-spacing: -0.31px;
   color: #364153;
   transition: color 0.2s;
+  font-style: Regular;
 }
 
 .header_link:hover {
@@ -93,7 +101,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #111827; 
+  color: #364153; 
   transition: all 0.2s ease-in-out;
   position: relative;
 }

@@ -1,0 +1,62 @@
+.catalog-page {
+  background-color: #FFFFFF;
+  min-height: 100vh;
+}
+
+.catalog-container {
+  width: 100%;
+  background-color: #F9FAFB;
+  max-width: 1280px; 
+  height: 1088.67px;
+  margin: 0 auto;
+  padding: 32px; 
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.catalog-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.catalog-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 0.07px;
+  color: #0A0A0A;
+  margin: 0;
+}
+
+.catalog-description {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.31px;
+  color: #4A5565;
+  margin: 0;
+}
+
+.catalog-content-wrapper {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.catalog-sidebar {
+  width: 256px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 90px;
+}
+
+.catalog-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 24px;
+}
