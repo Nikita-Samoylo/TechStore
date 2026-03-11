@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import Rating from './Rating';
+import Rating from '../common/Rating'
 import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
@@ -8,13 +8,13 @@ const ProductCard = ({ product }) => {
     
     return (
         <article className="product-card">
-            <Link to={`/product/${product.id}`} className="product-card__image-container">
+            <div className="product-card__image-container">
                 <img src={product.image} alt={product.name} className="product-card__image" />
-            </Link>
+            </div>
 
             <div className="product-card__content">
                 <h3 className="product-card__title">
-                    <Link to={`/product/${product.id}`}>
+                    <Link to={`/product/${product.id}`} className="product-card__link">
                         {product.name}
                     </Link>
                 </h3>
@@ -32,6 +32,11 @@ const ProductCard = ({ product }) => {
                         {product.category}
                     </div>
                 </div>
+
+                <button className="product-card__btn">
+                    Add to Cart
+                </button>
+            
             </div>
         </article>
     );

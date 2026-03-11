@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
-import CatalogPage from './pages/CatalogPage';
-import ProductPage from './pages/ProductPage';
-import CartPage from './pages/CartPage';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import CatalogPage from './pages/CatalogPage/CatalogPage.jsx';
+import ProductPage from './pages/ProductPage/ProductPage.jsx';
+import CartPage from './pages/CartPage/CartPage.jsx';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
 
 function App() {
   return (

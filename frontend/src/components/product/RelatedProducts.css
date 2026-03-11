@@ -1,0 +1,35 @@
+.related-products {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 1216px;
+  margin: 24px auto 40px auto;
+}
+
+.related-products__title {
+  margin: 0; 
+  font-family: 'Inter', sans-serif;
+  font-weight: 500; 
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: -0.45px;
+  color: #0A0A0A;
+}
+
+.related-products__grid {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 24px;
+  width: 100%;
+}
+
+.related-products .product-card {
+  width: 389.33px;
+  height: 516.33px;
+  flex-shrink: 0; 
+}
+
+.related-products .product-card__image-container {
+  height: 343.33px; 
+}

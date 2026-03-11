@@ -1,8 +1,8 @@
 import React from 'react';
-import Filters from '../components/Filters';
-import ProductCard from '../components/ProductCard';
-import CatalogTopBar from '../components/CatalogTopBar';
-import { products } from '../data/products';
+import Filters from '../../components/catalog/Filters';
+import ProductCard from '../../components/catalog/ProductCard';
+import CatalogTopBar from '../../components/catalog/CatalogTopBar';
+import { products } from '../../data/products';
 import './CatalogPage.css';
 
 const CatalogPage = () => {
