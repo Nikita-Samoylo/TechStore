@@ -28,7 +28,7 @@ const ProductPage = () => {
 
   const breadcrumbItems = [
     { label: 'Products', path: '/' },
-    { label: categoryFormatted, path: `/category/${product.category.toLowerCase()}` },
+    { label: categoryFormatted, path: '/categories' },
     { label: product.name },
   ];
 
