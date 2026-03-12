@@ -1,0 +1,42 @@
+.get-in-touch__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.get-in-touch__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: #EFF6FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 40px;
+}
+
+.get-in-touch__icon-svg {
+  width: 20px;
+  height: 20px;
+  color: #155DFC;
+}
+
+.get-in-touch__title {
+  margin: 0 0 6px 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.31px;
+  color: #0A0A0A;
+}
+
+.get-in-touch__text {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #4A5565;
+}

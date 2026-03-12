@@ -1,0 +1,30 @@
+.about-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.about-card__title {
+  margin: 0 0 16px 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: -0.44px;
+  color: #0A0A0A;
+}
+
+.our-story__text p {
+  margin: 0 0 16px 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: -0.31px;
+  color: #364153;
+}
+
+.our-story__text p:last-child {
+  margin-bottom: 0;
+}
