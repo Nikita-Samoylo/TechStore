@@ -1,0 +1,22 @@
+.cart-title {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 0.07px;
+  color: #0A0A0A;
+}
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1fr 384px;
+  gap: 32px;
+  align-items: start;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

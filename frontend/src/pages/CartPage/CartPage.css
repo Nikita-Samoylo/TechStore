@@ -1,0 +1,22 @@
+.cart-page {
+  background-color: #FFFFFF;
+  min-height: 100vh;
+}
+
+.cart-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+}
+
+.cart-container--filled {
+  background-color: #F9FAFB;
+  min-height: 785px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 151px;
+}
