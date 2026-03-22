@@ -1,0 +1,58 @@
+.deals-banner {
+  width: 100%;
+  border-radius: 10px;
+  padding: 28px 32px;
+  background: linear-gradient(90deg, #155DFC 0%, #9810FA 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.deals-banner__title {
+  margin: 0 0 8px 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  letter-spacing: -0.45px;
+  color: #FFFFFF;
+}
+
+.deals-banner__text {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.deals-banner__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.20);
+  border: none;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.deals-banner__pill-icon {
+  width: 20px;
+  height: 20px;
+  color: #FFFFFF;
+  flex: 0 0 20px;
+}
+
+.deals-banner__pill-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #FFFFFF;
+}

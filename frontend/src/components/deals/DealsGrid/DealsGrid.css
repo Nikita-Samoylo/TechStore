@@ -1,0 +1,26 @@
+.deals-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.deals-grid .product-card {
+  width: 100%;
+  height: auto;
+}
+
+.deals-grid .product-card__content {
+  height: auto;
+}
+
+.deals-grid .product-card__image-container {
+  height: 300px;
+}
+
+.deals-grid .product-card__image {
+  mix-blend-mode: normal;
+}
+
+.deals-grid .product-card__btn {
+  display: none;
+}
