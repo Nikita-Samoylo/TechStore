@@ -1,0 +1,23 @@
+.deal-item {
+  position: relative;
+}
+
+.deal-item__badge {
+  position: absolute;
+  top: 0;
+  right: -8px;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: #DC2626;
+  color: #FFFFFF;
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.12),
+    0 4px 6px -4px rgba(0, 0, 0, 0.12);
+  pointer-events: none;
+}

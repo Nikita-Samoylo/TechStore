@@ -1,0 +1,44 @@
+.about-page {
+  background-color: #FFFFFF;
+  min-height: 100vh;
+}
+
+.about-container {
+  width: 100%;
+  background-color: #F9FAFB;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.about-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.about-hero__title {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 0.07px;
+  color: #0A0A0A;
+}
+
+.about-hero__subtitle {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.31px;
+  color: #4A5565;
+  max-width: 720px;
+}

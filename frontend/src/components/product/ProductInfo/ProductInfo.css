@@ -1,0 +1,348 @@
+.product-info {
+  width: 100%;
+  max-width: 592px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.product-info__title {
+  margin: 0 0 12px 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 0.07px;
+  color: #0A0A0A;
+}
+
+.product-info__rating-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.product-info__rating-container {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 20px;
+  width: auto;
+}
+
+.product-info__rating-value {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #4A5565;
+}
+
+.product-info__reviews {
+  margin-top: 8.5px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #4A5565;
+}
+
+.product-info__price-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.product-info__price {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: 0.4px;
+  color: #155DFC;
+}
+
+.product-info__shipping {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #6A7282;
+}
+
+.product-info__highlights,
+.product-info__description {
+  width: 100%;
+  margin-top: 0;
+}
+
+.product-highlights {
+  width: 100%;
+  max-width: 592px;
+  box-sizing: border-box;
+  background: #EFF6FF;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 128px;
+  margin-top: 24px; 
+}
+
+.product-highlights__title {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #0A0A0A;
+}
+
+.product-highlights__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  max-width: 560px;
+}
+
+.product-highlights__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.product-highlights__bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: #155DFC;
+  flex: 0 0 6px;
+}
+
+.product-highlights__text {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #0A0A0A;
+}
+
+.product-highlights__label {
+  font-weight: 500;
+}
+
+.product-highlights__value {
+  font-weight: 400;
+}
+
+.product-description {
+  width: 100%;
+  max-width: 592px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 120px;
+
+  margin-top: 24px;
+}
+
+.product-description__title {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: -0.45px;
+  color: #0A0A0A;
+}
+
+.product-description__text {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: -0.31px;
+  color: #364153;
+  width: 100%;
+  max-width: 552px;
+}
+
+.product-qty {
+  width: 100%;
+  max-width: 592px;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-qty__label {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #0A0A0A;
+  font-style: Semi Bold;
+}
+
+.product-qty__controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 40px;
+}
+
+.product-qty__btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #D1D5DC;
+  background: #F9FAFB;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.31px;
+  color: #0A0A0A;
+}
+
+.product-qty__value {
+  min-width: 20px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.31px;
+  color: #0A0A0A;
+}
+
+.product-add-btn {
+  width: 100%;
+  max-width: 592px;
+  height: 56px;
+  margin-top: 24px;
+  border: none;
+  border-radius: 10px;
+  background: #155DFC;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.product-add-btn:hover {
+  filter: brightness(0.95);
+}
+
+.product-add-btn__icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+}
+
+.product-add-btn__text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.31px;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.tech-specs {
+  width: 100%;
+  max-width: 592px;
+  margin-top: 16px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.tech-specs__header {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tech-specs__title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #0A0A0A;
+}
+
+.tech-specs__icon {
+  width: 20px;
+  height: 20px;
+  color: #717182;
+  transition: transform 0.2s ease;
+}
+
+.tech-specs__icon--open {
+  transform: rotate(180deg);
+}
+
+.tech-specs__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-top: 1px solid #E5E7EB;
+}
+
+.tech-specs__title {
+  color: #0A0A0A;
+}
+
+.tech-specs__label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #364153;
+}
+
+.tech-specs__value {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #6A7282;
+}
