@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { products } from '../../data/products';
 import CartEmptyState from '../../components/cart/CartEmptyState/CartEmptyState';
 import FilledCart from '../../components/cart/FilledCart/FilledCart';
 import './CartPage.css';
 
 const CartPage = () => {
-  // ВРЕМЕННО
-  const cartItems = [
-    { product: products.find((p) => p.id === 5), qty: 1 },
-  ].filter((x) => x.product);
+  const [cartItems, setCartItems] = useState(
+    [{ product: products.find((p) => p.id === 5), qty: 1 }].filter((x) => x.product)
+  );
+
+  const handleUpdateQuantity = (productId, newQty) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.product.id === productId ? { ...item, qty: newQty } : item
+      )
+    );
+  };
+
+  const handleRemoveItem = (productId) => {
+    setCartItems((prevItems) =>
+      prevItems.filter((item) => item.product.id !== productId)
+    );
+  };
+
   const isEmpty = cartItems.length === 0;
 
   const subtotalCents = cartItems.reduce(
@@ -33,6 +47,8 @@ const CartPage = () => {
             taxCents={taxCents}
             totalCents={totalCents}
             fmt={fmt}
+            onUpdateQuantity={handleUpdateQuantity}
+            onRemove={handleRemoveItem}
           />
         )}
       </div>

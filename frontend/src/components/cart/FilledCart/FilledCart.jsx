@@ -3,7 +3,15 @@ import CartItemCard from '../CartItemCard/CartItemCard';
 import CartSummarySidebar from '../CartSummarySidebar/CartSummarySidebar';
 import './FilledCart.css';
 
-const FilledCart = ({ items, subtotalCents, taxCents, totalCents, fmt }) => {
+const FilledCart = ({ 
+  items, 
+  subtotalCents, 
+  taxCents, 
+  totalCents, 
+  fmt,
+  onUpdateQuantity,
+  onRemove
+}) => {
   return (
     <>
       <h1 className="cart-title">Shopping Cart</h1>
@@ -11,7 +19,13 @@ const FilledCart = ({ items, subtotalCents, taxCents, totalCents, fmt }) => {
       <div className="cart-layout">
         <section className="cart-items" aria-label="Cart items">
           {items.map((item) => (
-            <CartItemCard key={item.product.id} item={item} fmt={fmt} />
+            <CartItemCard 
+              key={item.product.id} 
+              item={item} 
+              fmt={fmt}
+              onUpdateQuantity={onUpdateQuantity}
+              onRemove={onRemove}
+            />
           ))}
         </section>
 
