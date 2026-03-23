@@ -1,6 +1,6 @@
 import React from 'react';
-import ProductCard from '../catalog/ProductCard'
-import { products } from '../../data/products';
+import ProductCard from '../../catalog/ProductCard/ProductCard'
+import { products } from '../../../data/products';
 import './RelatedProducts.css';
 
 const RelatedProducts = ({ category, currentId }) => {

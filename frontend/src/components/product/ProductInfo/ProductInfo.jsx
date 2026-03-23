@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Rating from '../common/Rating';
+import Rating from '../../common/Rating/Rating';
 import { RiShoppingCartLine, RiArrowDownSLine } from 'react-icons/ri';
 import './ProductInfo.css';
 

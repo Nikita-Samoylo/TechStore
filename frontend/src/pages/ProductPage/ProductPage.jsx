@@ -1,9 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import Breadcrumbs from '../../components/product/Breadcrumbs';
-import RelatedProducts from '../../components/product/RelatedProducts';
-import ProductInfo from '../../components/product/ProductInfo';
-import ProductGallery from '../../components/product/ProductGallery';
+import Breadcrumbs from '../../components/product/Breadcrumbs/Breadcrumbs';
+import RelatedProducts from '../../components/product/RelatedProducts/RelatedProducts';
+import ProductInfo from '../../components/product/ProductInfo/ProductInfo';
+import ProductGallery from '../../components/product/ProductGallery/ProductGallery';
 import { products } from '../../data/products';
 import './ProductPage.css';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductCard from '../../catalog/ProductCard';
+import ProductCard from '../../catalog/ProductCard/ProductCard';
 import './DealItem.css';
 
 const DealItem = ({ product, discountPercent = 20 }) => {

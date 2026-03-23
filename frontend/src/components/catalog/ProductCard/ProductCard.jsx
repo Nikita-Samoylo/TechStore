@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import Rating from '../common/Rating'
+import Rating from '../../common/Rating/Rating'
 import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
