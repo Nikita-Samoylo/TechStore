@@ -1,7 +1,17 @@
 import React from 'react';
 import './CartSummarySidebar.css';
 
-const CartSummarySidebar = ({ subtotalCents, taxCents, totalCents, fmt }) => {
+const CartSummarySidebar = ({ 
+  subtotalCents, 
+  discountCents,
+  taxCents, 
+  totalCents, 
+  fmt,
+  promoCode,
+  setPromoCode,
+  onApplyPromo,
+  promoMessage
+}) => {
   return (
     <aside className="cart-sidebar" aria-label="Order summary">
       <section className="cart-card order-summary">
@@ -11,6 +21,13 @@ const CartSummarySidebar = ({ subtotalCents, taxCents, totalCents, fmt }) => {
           <span className="order-summary__label">Subtotal</span>
           <span className="order-summary__value">{fmt(subtotalCents)}</span>
         </div>
+
+        {discountCents > 0 && (
+          <div className="order-summary__row order-summary__row--discount">
+            <span className="order-summary__label">Discount (10%)</span>
+            <span className="order-summary__value">-{fmt(discountCents)}</span>
+          </div>
+        )}
 
         <div className="order-summary__row">
           <span className="order-summary__label">Tax (8%)</span>
@@ -28,11 +45,28 @@ const CartSummarySidebar = ({ subtotalCents, taxCents, totalCents, fmt }) => {
           <p className="promo__title">Promo Code</p>
 
           <div className="promo__controls">
-            <input className="promo__input" placeholder="Enter code" />
-            <button type="button" className="promo__apply">Apply</button>
+            <input 
+              className="promo__input" 
+              placeholder="Enter code" 
+              value={promoCode}
+              onChange={(e) => setPromoCode(e.target.value)}
+            />
+            <button 
+              type="button" 
+              className="promo__apply"
+              onClick={onApplyPromo}
+            >
+              Apply
+            </button>
           </div>
 
-          <p className="promo__hint">Try code "SAVE10" for 10% off</p>
+          {promoMessage && promoMessage.text ? (
+            <p className={`promo__hint promo__msg--${promoMessage.type}`}>
+              {promoMessage.text}
+            </p>
+          ) : (
+            <p className="promo__hint">Try code "SAVE10" for 10% off</p>
+          )}
         </div>
 
         <button type="button" className="checkout-btn">Proceed to Checkout</button>

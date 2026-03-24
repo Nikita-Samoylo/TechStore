@@ -1,37 +1,38 @@
 import React, { useState } from 'react';
-import { products } from '../../data/products';
 import CartEmptyState from '../../components/cart/CartEmptyState/CartEmptyState';
 import FilledCart from '../../components/cart/FilledCart/FilledCart';
+import { useCart } from '../../context/CartContext';
 import './CartPage.css';
 
 const CartPage = () => {
-  const [cartItems, setCartItems] = useState(
-    [{ product: products.find((p) => p.id === 5), qty: 1 }].filter((x) => x.product)
-  );
+  const { cartItems, updateQuantity, removeFromCart } = useCart();
 
-  const handleUpdateQuantity = (productId, newQty) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.product.id === productId ? { ...item, qty: newQty } : item
-      )
-    );
-  };
+  const [promoCode, setPromoCode] = useState('');
+  const [discountPercent, setDiscountPercent] = useState(0); 
+  const [promoMessage, setPromoMessage] = useState({ type: '', text: '' }); 
 
-  const handleRemoveItem = (productId) => {
-    setCartItems((prevItems) =>
-      prevItems.filter((item) => item.product.id !== productId)
-    );
+  const handleApplyPromo = () => {
+    if (promoCode.trim().toUpperCase() === 'SAVE10') {
+      setDiscountPercent(10);
+      setPromoMessage({ type: 'success', text: 'Promo code applied!' });
+    } else if (promoCode.trim() === '') {
+      setPromoMessage({ type: '', text: '' });
+    } else {
+      setDiscountPercent(0);
+      setPromoMessage({ type: 'error', text: 'Неверный промокод' });
+    }
   };
 
   const isEmpty = cartItems.length === 0;
 
-  const subtotalCents = cartItems.reduce(
-    (sum, item) => sum + item.product.price * item.qty,
-    0
-  );
+  const subtotalCents = cartItems.reduce((sum, item) => sum + item.product.price * item.qty, 0);
+  const discountCents = Math.round(subtotalCents * (discountPercent / 100));
+  const subtotalAfterDiscount = subtotalCents - discountCents;
+  
   const taxRate = 0.08;
-  const taxCents = Math.round(subtotalCents * taxRate);
-  const totalCents = subtotalCents + taxCents;
+  const taxCents = Math.round(subtotalAfterDiscount * taxRate);
+  
+  const totalCents = subtotalAfterDiscount + taxCents;
 
   const fmt = (cents) => `$${(cents / 100).toFixed(2)}`;
 
@@ -44,11 +45,17 @@ const CartPage = () => {
           <FilledCart
             items={cartItems}
             subtotalCents={subtotalCents}
+            discountCents={discountCents}
             taxCents={taxCents}
             totalCents={totalCents}
             fmt={fmt}
-            onUpdateQuantity={handleUpdateQuantity}
-            onRemove={handleRemoveItem}
+            onUpdateQuantity={updateQuantity}
+            onRemove={removeFromCart}
+            
+            promoCode={promoCode}
+            setPromoCode={setPromoCode}
+            onApplyPromo={handleApplyPromo}
+            promoMessage={promoMessage}
           />
         )}
       </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Rating from '../../common/Rating/Rating';
 import { RiShoppingCartLine, RiArrowDownSLine } from 'react-icons/ri';
+import { useCart } from '../../../context/CartContext';
 import './ProductInfo.css';
 
 const ProductInfo = ({ product }) => {
@@ -9,11 +10,15 @@ const ProductInfo = ({ product }) => {
   const [qty, setQty] = useState(1);
   const [specsOpen, setSpecsOpen] = useState(false);
 
+  const { addToCart, cartItems } = useCart();
+
+  const isInCart = cartItems.some((item) => item.product.id === product.id);
+
   const dec = () => setQty((prev) => Math.max(1, prev - 1));
   const inc = () => setQty((prev) => prev + 1);
 
   const handleAddToCart = () => {
-    console.log('Add to cart:', { productId: product.id, qty });
+    addToCart(product, qty);
   };
 
   const specs = product.specifications ?? [];
@@ -65,7 +70,13 @@ const ProductInfo = ({ product }) => {
         <p className="product-qty__label">Quantity</p>
 
         <div className="product-qty__controls">
-          <button type="button" className="product-qty__btn" onClick={dec} disabled={qty <= 1} aria-label="Decrease quantity">
+          <button
+            type="button"
+            className="product-qty__btn"
+            onClick={dec}
+            disabled={qty <= 1}
+            aria-label="Decrease quantity"
+          >
             –
           </button>
 
@@ -73,7 +84,12 @@ const ProductInfo = ({ product }) => {
             {qty}
           </span>
 
-          <button type="button" className="product-qty__btn" onClick={inc} aria-label="Increase quantity">
+          <button
+            type="button"
+            className="product-qty__btn"
+            onClick={inc}
+            aria-label="Increase quantity"
+          >
             +
           </button>
         </div>
@@ -81,14 +97,23 @@ const ProductInfo = ({ product }) => {
 
       <button type="button" className="product-add-btn" onClick={handleAddToCart}>
         <RiShoppingCartLine className="product-add-btn__icon" />
-        <span className="product-add-btn__text">Add to Cart</span>
+        <span className="product-add-btn__text">
+          {isInCart ? 'Add More to Cart' : 'Add to Cart'}
+        </span>
       </button>
 
       {specs.length > 0 && (
         <section className="tech-specs">
-          <button type="button" className="tech-specs__header" onClick={() => setSpecsOpen((v) => !v)} aria-expanded={specsOpen}>
+          <button
+            type="button"
+            className="tech-specs__header"
+            onClick={() => setSpecsOpen((v) => !v)}
+            aria-expanded={specsOpen}
+          >
             <span className="tech-specs__title">Technical Specifications</span>
-            <RiArrowDownSLine className={`tech-specs__icon ${specsOpen ? 'tech-specs__icon--open' : ''}`} />
+            <RiArrowDownSLine
+              className={`tech-specs__icon ${specsOpen ? 'tech-specs__icon--open' : ''}`}
+            />
           </button>
 
           {specsOpen && (

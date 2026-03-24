@@ -3,6 +3,9 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  position: sticky;
+  top: 97px;
+  align-self: flex-start;
 }
 
 .cart-card {
@@ -36,12 +39,12 @@
   font-size: 14px;
   line-height: 20px;
   letter-spacing: -0.15px;
-  color: #6A7282;
+  color: #4A5565;
 }
 
 .order-summary__value {
   font-family: 'Inter', sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 14px;
   line-height: 20px;
   letter-spacing: -0.15px;
@@ -55,7 +58,7 @@
 }
 
 .order-summary__row--total {
-  padding-top: 10px;
+  padding-top: 0;
 }
 
 .order-summary__label--total {
@@ -70,87 +73,107 @@
 .order-summary__total {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
-  font-size: 18px;
-  line-height: 27px;
-  letter-spacing: -0.44px;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -0.45px;
   color: #155DFC;
 }
 
 .promo {
-  margin-top: 10px;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .promo__title {
-  margin: 0 0 8px 0;
+  margin: 0;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 20px;
-  letter-spacing: -0.31px;
+  letter-spacing: -0.15px;
   color: #0A0A0A;
 }
 
 .promo__controls {
   display: flex;
   gap: 8px;
+  width: 100%;
+  height: 38px;
 }
 
 .promo__input {
   flex: 1;
-  height: 36px;
+  height: 38px;
   border-radius: 10px;
   border: 1px solid #D1D5DC;
-  padding: 0 12px;
+  padding: 8px 12px;
   outline: none;
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: -0.15px;
   color: #0A0A0A;
   background: #FFFFFF;
+  box-sizing: border-box;
 }
 
 .promo__input::placeholder {
-  color: #6A7282;
+  color: rgba(10, 10, 10, 0.5);
 }
 
 .promo__apply {
-  height: 36px;
-  padding: 0 14px;
+  width: 71px;
+  height: 38px;
   border-radius: 10px;
   border: none;
   background: #1E2939;
   color: #FFFFFF;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  text-align: center;
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
 .promo__hint {
-  margin: 8px 0 0 0;
+  margin: 0;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
-  letter-spacing: -0.15px;
+  letter-spacing: 0;
   color: #6A7282;
 }
 
 .checkout-btn {
   width: 100%;
-  height: 44px;
-  margin-top: 12px;
+  height: 56px;
+  margin-top: 16px;
   border: none;
   border-radius: 10px;
   background: #155DFC;
   color: #FFFFFF;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.15px;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.31px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .checkout-btn:hover {
   background: #114AC6;
+}
+
+.shipping {
+  padding: 20px 20px 18px 20px;
 }
 
 .shipping__header {
@@ -161,19 +184,19 @@
 }
 
 .shipping__icon {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   color: #155DFC;
-  flex: 0 0 18px;
+  flex: 0 0 20px;
 }
 
 .shipping__title {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 18px;
   line-height: 27px;
-  letter-spacing: 0.07px;
+  letter-spacing: -0.44px;
   color: #0A0A0A;
 }
 
@@ -187,6 +210,7 @@
   display: flex;
   align-items: flex-start;
   gap: 8px;
+  margin-bottom: 2px;
 }
 
 .shipping__row-icon {
@@ -204,10 +228,10 @@
 .shipping__label {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  letter-spacing: -0.31px;
+  letter-spacing: -0.15px;
   color: #0A0A0A;
 }
 
@@ -218,21 +242,35 @@
   font-size: 14px;
   line-height: 20px;
   letter-spacing: -0.15px;
-  color: #6A7282;
+  color: #4A5565;
 }
 
 .shipping__green {
-  margin: 6px 0 0 0;
+  margin: 4px 0 0 0;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   letter-spacing: -0.15px;
-  color: #16A34A;
+  color: #00A63E;
 }
 
 .shipping__divider {
   height: 1px;
-  background: #E5E7EB;
+  background: rgba(0, 0, 0, 0.1);
   margin: 12px 0;
+}
+
+.order-summary__row--discount .order-summary__label,
+.order-summary__row--discount .order-summary__value {
+  color: #10B981;
+  font-weight: 500;
+}
+
+.promo__msg--error {
+  color: #EF4444;
+}
+
+.promo__msg--success {
+  color: #10B981;
 }

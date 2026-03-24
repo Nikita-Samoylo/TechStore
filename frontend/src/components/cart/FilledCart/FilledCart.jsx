@@ -6,11 +6,16 @@ import './FilledCart.css';
 const FilledCart = ({ 
   items, 
   subtotalCents, 
+  discountCents,
   taxCents, 
   totalCents, 
   fmt,
   onUpdateQuantity,
-  onRemove
+  onRemove,
+  promoCode,
+  setPromoCode,
+  onApplyPromo,
+  promoMessage
 }) => {
   return (
     <>
@@ -31,9 +36,14 @@ const FilledCart = ({
 
         <CartSummarySidebar
           subtotalCents={subtotalCents}
+          discountCents={discountCents}
           taxCents={taxCents}
           totalCents={totalCents}
           fmt={fmt}
+          promoCode={promoCode}
+          setPromoCode={setPromoCode}
+          onApplyPromo={onApplyPromo}
+          promoMessage={promoMessage}
         />
       </div>
     </>

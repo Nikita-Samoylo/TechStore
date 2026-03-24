@@ -1,10 +1,19 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import Rating from '../../common/Rating/Rating'
+import Rating from '../../common/Rating/Rating';
+import { useCart } from '../../../context/CartContext';
 import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
     const formattedPrice = `$${(product.price / 100).toFixed(2)}`;
+    
+    const { addToCart } = useCart();
+
+    const handleAddToCart = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        addToCart(product, 1);
+    };
     
     return (
         <article className="product-card">
@@ -33,7 +42,10 @@ const ProductCard = ({ product }) => {
                     </div>
                 </div>
 
-                <button className="product-card__btn">
+                <button 
+                  className="product-card__btn"
+                  onClick={handleAddToCart}
+                >
                     Add to Cart
                 </button>
             
