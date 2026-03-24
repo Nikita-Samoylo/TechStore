@@ -14,9 +14,8 @@
 
 .cart-container--filled {
   background-color: #F9FAFB;
-  min-height: 785px;
+  height: 785px;
   display: flex;
   flex-direction: column;
   gap: 32px;
-  margin-bottom: 151px;
 }

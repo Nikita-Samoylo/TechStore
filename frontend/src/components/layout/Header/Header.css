@@ -112,23 +112,25 @@
 }
 
 .header_icon {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .header_badge {
-    position: absolute;
-    top: -4px;
-    right: -4px;
-    width: 18px;
-    height: 18px;
-    background-color: #155DFC;
-    color: white;
-    border-radius: 50%;
-    border: 2px solid #ffffff;
-    font-size: 10px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  top: -4px;
+  left: 24px;
+  width: 20px;
+  height: 20px;
+  background-color: #155DFC;
+  color: #FFFFFF;
+  border-radius: 9999px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

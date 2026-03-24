@@ -7,10 +7,12 @@ import AboutPage from './pages/AboutPage/AboutPage.jsx';
 import DealsPage from './pages/DealsPage/DealsPage.jsx';
 import Header from './components/layout/Header/Header';
 import Footer from './components/layout/Footer/Footer';
+import { CartProvider } from './context/CartContext';
 
 function App() {
   return (
-    <div className="app">
+    <CartProvider>
+      <div className="app">
       <Header />  
       <main>
         <Routes>
@@ -24,6 +26,7 @@ function App() {
       </main>
       <Footer />
     </div>
+    </CartProvider>
   );
 }
 
