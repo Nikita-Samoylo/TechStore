@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Filters from '../../components/catalog/Filters/Filters';
 import ProductCard from '../../components/catalog/ProductCard/ProductCard';
 import CatalogTopBar from '../../components/catalog/CatalogTopBar/CatalogTopBar';
@@ -7,12 +7,25 @@ import './CatalogPage.css';
 
 const CatalogPage = () => {
   const [sortOption, setSortOption] = useState('name-asc');
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
   const [filters, setFilters] = useState({
-    selectedRatings: [], 
+    selectedRatings: [],
     priceMin: 0,
     priceMax: 3000,
   });
+
+  useEffect(() => {
+    if (isFiltersOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [isFiltersOpen]);
 
   const displayedProducts = useMemo(() => {
     let result = [...products];
@@ -58,6 +71,7 @@ const CatalogPage = () => {
           productsCount={displayedProducts.length}
           currentSort={sortOption}
           onSortChange={setSortOption}
+          onOpenFilters={() => setIsFiltersOpen(true)}
         />
 
         <div className="catalog-content-wrapper">
@@ -76,6 +90,21 @@ const CatalogPage = () => {
               </p>
             )}
           </main>
+        </div>
+      </div>
+
+      <div className={`catalog-filters-drawer ${isFiltersOpen ? 'catalog-filters-drawer--open' : ''}`}>
+        <div
+          className="catalog-filters-drawer__overlay"
+          onClick={() => setIsFiltersOpen(false)}
+        />
+        <div className="catalog-filters-drawer__panel">
+          <Filters
+            filters={filters}
+            setFilters={setFilters}
+            isMobile
+            onClose={() => setIsFiltersOpen(false)}
+          />
         </div>
       </div>
     </div>

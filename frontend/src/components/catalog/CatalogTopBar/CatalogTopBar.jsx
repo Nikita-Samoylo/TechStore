@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { RiArrowDownSLine, RiCheckLine } from 'react-icons/ri';
+import { RiArrowDownSLine, RiCheckLine, RiSoundModuleLine } from 'react-icons/ri';
 import './CatalogTopBar.css';
 
-const CatalogTopBar = ({ productsCount, currentSort, onSortChange }) => {
+const CatalogTopBar = ({ productsCount, currentSort, onSortChange, onOpenFilters }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const options = [
@@ -21,13 +21,20 @@ const CatalogTopBar = ({ productsCount, currentSort, onSortChange }) => {
 
   return (
     <div className="catalog-topbar">
-      <span className="catalog-topbar__count">{productsCount} products</span>
+      <div className="catalog-topbar__mobile-row">
+        <button type="button" className="catalog-topbar__filters-btn" onClick={onOpenFilters}>
+          <RiSoundModuleLine className="catalog-topbar__filters-icon" />
+          <span>Filters</span>
+        </button>
+
+        <span className="catalog-topbar__count">{productsCount} products</span>
+      </div>
 
       <div className="catalog-topbar__sort">
         <span className="catalog-topbar__label">Sort by:</span>
 
         <div className="dropdown">
-          <button className="dropdown__trigger" onClick={() => setIsOpen(!isOpen)}>
+          <button type="button" className="dropdown__trigger" onClick={() => setIsOpen(!isOpen)}>
             <span>{currentLabel}</span>
             <RiArrowDownSLine className={`dropdown__arrow ${isOpen ? 'open' : ''}`} />
           </button>
