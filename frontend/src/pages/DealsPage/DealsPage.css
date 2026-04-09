@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  box-sizing: border-box;
 }
 
 .deals-header {
@@ -90,4 +91,16 @@
 
 .deals-cta__btn:hover {
   background: #114AC6;
+}
+
+@media (max-width: 1024px) {
+  .deals-container {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .deals-container {
+    padding: 32px 16px;
+  }
 }

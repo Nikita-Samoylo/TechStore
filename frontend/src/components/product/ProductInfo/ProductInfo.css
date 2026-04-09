@@ -375,7 +375,7 @@
   }
 
   .product-info__rating-container > div {
-    gap: 1.99px !important;
+    gap: 1.99px;
   }
 
   .product-info__rating-container svg {

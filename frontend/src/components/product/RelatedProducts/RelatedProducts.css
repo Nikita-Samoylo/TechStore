@@ -109,6 +109,6 @@
 }
 
   .related-products .product-card__rating > div {
-    gap: 1.99px !important;
+    gap: 1.99px;
   }
 }
