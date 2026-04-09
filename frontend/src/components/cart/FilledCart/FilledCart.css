@@ -20,3 +20,30 @@
   flex-direction: column;
   gap: 16px;
 }
+
+@media (max-width: 1024px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .cart-items {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-title {
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 0.07px;
+  }
+
+  .cart-layout {
+    gap: 32px;
+  }
+
+  .cart-items {
+    gap: 16px;
+  }
+}

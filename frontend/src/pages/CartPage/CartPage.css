@@ -14,8 +14,29 @@
 
 .cart-container--filled {
   background-color: #F9FAFB;
-  height: 785px;
+  min-height: 785px;
   display: flex;
   flex-direction: column;
   gap: 32px;
+}
+
+@media (max-width: 1024px) {
+  .cart-container {
+    padding: 32px 24px;
+  }
+
+  .cart-container--filled {
+    min-height: auto;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-container {
+    padding: 32px 16px;
+  }
+
+  .cart-container--filled {
+    gap: 32px;
+  }
 }

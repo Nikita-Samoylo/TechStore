@@ -8,9 +8,9 @@
 }
 
 .related-products__title {
-  margin: 0; 
+  margin: 0;
   font-family: 'Inter', sans-serif;
-  font-weight: 500; 
+  font-weight: 500;
   font-size: 20px;
   line-height: 30px;
   letter-spacing: -0.45px;
@@ -19,7 +19,7 @@
 
 .related-products__grid {
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   gap: 24px;
   width: 100%;
 }
@@ -27,9 +27,88 @@
 .related-products .product-card {
   width: 389.33px;
   height: 516.33px;
-  flex-shrink: 0; 
+  flex-shrink: 0;
 }
 
 .related-products .product-card__image-container {
-  height: 343.33px; 
+  height: 343.33px;
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .related-products__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .related-products .product-card {
+    width: 354.4px;
+    max-width: 354.4px;
+    height: auto;
+    border: 0.56px solid #E5E7EB;
+    border-radius: 10px;
+    padding: 0.56px;
+    box-sizing: border-box;
+  }
+
+  .related-products .product-card__image-container {
+    height: 354.4px;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .related-products .product-card__content {
+    padding: 16px;
+    gap: 8px;
+    height: auto;
+    min-height: 0;
+    box-sizing: border-box;
+  }
+
+  .related-products .product-card__btn {
+    display: flex;
+    height: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .related-products__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .related-products .product-card {
+    width: 100%;
+    height: auto;
+    border: 0.56px solid #E5E7EB;
+    border-radius: 10px;
+    padding: 0.56px;
+    box-sizing: border-box;
+  }
+
+  .related-products .product-card__image-container {
+    height: 342.58px;
+    border-radius: 10px 10px 0 0;
+  }
+
+ @media (max-width: 768px) {
+  .related-products .product-card__content {
+    padding: 15.99px;
+    gap: 7.99px;
+
+    height: auto;
+    min-height: 0;
+    box-sizing: border-box;
+  }
+
+  .related-products .product-card__btn {
+    display: flex;
+    height: 36px;
+  }
+}
+
+  .related-products .product-card__rating > div {
+    gap: 1.99px !important;
+  }
 }
