@@ -1,5 +1,5 @@
 import React from 'react';
-import ValueCard from './ValueCard';
+import ValueCard from '../ValueCard/ValueCard';
 import './OurValues.css';
 
 const VALUES = [

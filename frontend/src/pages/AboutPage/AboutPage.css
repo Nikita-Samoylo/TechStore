@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   gap: 48px;
+  box-sizing: border-box;
 }
 
 .about-hero {
@@ -41,4 +42,20 @@
   letter-spacing: -0.31px;
   color: #4A5565;
   max-width: 720px;
+}
+@media (max-width: 1024px) {
+  .about-container {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    padding: 32px 16px;
+    gap: 32px;
+  }
+
+  .about-hero__subtitle {
+    max-width: 100%;
+  }
 }
