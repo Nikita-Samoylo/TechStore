@@ -1,19 +1,18 @@
 import React from 'react';
-import { RiSoundModuleLine } from 'react-icons/ri';
+import { RiSoundModuleLine, RiCloseLine } from 'react-icons/ri';
 import './Filters.css';
 
-const Filters = ({ filters, setFilters }) => {
+const Filters = ({ filters, setFilters, isMobile = false, onClose }) => {
   const handleRatingChange = (rating) => {
     setFilters((prev) => {
       const currentSelected = prev.selectedRatings;
-      
+
       if (currentSelected.includes(rating)) {
         return {
           ...prev,
           selectedRatings: currentSelected.filter((r) => r !== rating),
         };
-      } 
-      else {
+      } else {
         return {
           ...prev,
           selectedRatings: [...currentSelected, rating],
@@ -39,10 +38,16 @@ const Filters = ({ filters, setFilters }) => {
   const maxPercent = (filters.priceMax / 3000) * 100;
 
   return (
-    <aside className="filters">
+    <aside className={`filters ${isMobile ? 'filters--mobile' : ''}`}>
       <div className="filters_header">
-        <RiSoundModuleLine className="filters_icon" />
+        {!isMobile && <RiSoundModuleLine className="filters_icon" />}
         <h2 className="filters_title">Filters</h2>
+
+        {isMobile && (
+          <button type="button" className="filters_close-btn" onClick={onClose} aria-label="Close filters">
+            <RiCloseLine />
+          </button>
+        )}
       </div>
 
       <div className="filters_section">
@@ -65,11 +70,11 @@ const Filters = ({ filters, setFilters }) => {
 
       <div className="filters_section">
         <h3 className="filters_subtitle">Price Range</h3>
-        
+
         <div className="filters_slider">
           <div className="filters_slider-track"></div>
-          <div 
-            className="filters_slider-range" 
+          <div
+            className="filters_slider-range"
             style={{ left: `${minPercent}%`, right: `${100 - maxPercent}%` }}
           ></div>
           <input

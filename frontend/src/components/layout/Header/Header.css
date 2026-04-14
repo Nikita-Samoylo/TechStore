@@ -3,10 +3,10 @@
   height: 65px;
   background-color: #FFFFFF;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 
+  box-shadow:
     0px 1px 3px 0px rgba(0, 0, 0, 0.1),
     0px 1px 2px -1px rgba(0, 0, 0, 0.1);
-  display: flex; 
+  display: flex;
   justify-content: center;
   position: sticky;
   top: 0;
@@ -15,11 +15,12 @@
 
 .header_container {
   width: 100%;
-  max-width: 1280px; 
-  height: 64px;
+  max-width: 1280px;
   padding: 0 32px;
   height: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .header_wrapper {
@@ -32,12 +33,12 @@
 .header_logo {
   display: flex;
   align-items: center;
-  gap: 8px; 
+  gap: 8px;
   text-decoration: none;
 }
 
 .header_logo-icon {
-  width: 40px; 
+  width: 40px;
   height: 40px;
   background: linear-gradient(135deg, #155DFC 0%, #9810FA 100%);
   border-radius: 10px;
@@ -45,10 +46,9 @@
   align-items: center;
   justify-content: center;
   font-size: 20px;
-  color: #FFFFFF; 
+  color: #FFFFFF;
   font-family: 'Inter', sans-serif;
   font-weight: 700;
-  font-style: Bold;
   line-height: 28px;
   letter-spacing: -0.45px;
 }
@@ -60,12 +60,11 @@
   line-height: 28px;
   letter-spacing: -0.45px;
   color: #0A0A0A;
-  font-style: Bold;
 }
 
 .header_nav {
   display: flex;
-  gap: 32px; 
+  gap: 32px;
 }
 
 .header_link {
@@ -77,23 +76,22 @@
   letter-spacing: -0.31px;
   color: #364153;
   transition: color 0.2s;
-  font-style: Regular;
 }
 
 .header_link:hover {
-  color: #155DFC; 
+  color: #155DFC;
 }
 
 .header_actions {
   display: flex;
   align-items: center;
-  gap: 16px; 
+  gap: 16px;
 }
 
 .header_btn {
   width: 40px;
-  height: 40px; 
-  border-radius: 50%;
+  height: 40px;
+  border-radius: 9999px;
   background: transparent;
   border: none;
   padding: 0;
@@ -101,14 +99,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #364153; 
+  color: #364153;
   transition: all 0.2s ease-in-out;
   position: relative;
+  text-decoration: none;
 }
 
 .header_btn:hover {
-  background-color: #F3F4F6; 
-  color: #000000; 
+  background-color: #F3F4F6;
+  color: #000000;
 }
 
 .header_icon {
@@ -119,9 +118,10 @@
 .header_badge {
   position: absolute;
   top: -4px;
-  left: 24px;
-  width: 20px;
+  right: -6px;
+  min-width: 20px;
   height: 20px;
+  padding: 0 4px;
   background-color: #155DFC;
   color: #FFFFFF;
   border-radius: 9999px;
@@ -130,7 +130,113 @@
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.header_menu-btn {
+  display: none;
+}
+
+.header_mobile-menu {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .header_container {
+    padding: 0 24px;
+  }
+
+  .header_nav {
+    gap: 20px;
+  }
+
+  .header_link {
+    font-size: 15px;
+  }
+
+  .header_actions {
+    gap: 12px;
+  }
+
+  .header_logo-text {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: auto;
+    min-height: 64px;
+  }
+
+  .header_container {
+    padding: 0 16px;
+  }
+
+  .header_wrapper {
+    height: 64px;
+  }
+
+  .header_logo-text {
+    display: none;
+  }
+
+  .header_nav {
+    display: none;
+  }
+
+  .header_actions {
+    width: auto;
+    justify-content: flex-end;
+    gap: 16px;
+  }
+
+  .header_menu-btn {
+    display: flex;
+  }
+
+  .header_mobile-menu {
+    display: none;
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    margin-right: -16px;
+
+    background: #FFFFFF;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow:
+      0px 1px 3px 0px rgba(0, 0, 0, 0.1),
+      0px 1px 2px -1px rgba(0, 0, 0, 0.1);
+
+    padding: 16px 0 20px 0;
+  }
+
+  .header_mobile-menu--open {
+    display: block;
+  }
+
+  .header_mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  .header_mobile-link {
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.31px;
+    color: #364153;
+  }
+
+  .header_mobile-link:hover {
+    color: #155DFC;
+  }
 }

@@ -45,3 +45,9 @@
   color: #4A5565;
   max-width: 320px;
 }
+
+@media (max-width: 768px) {
+  .our-values__card-text {
+    max-width: 100%;
+  }
+}

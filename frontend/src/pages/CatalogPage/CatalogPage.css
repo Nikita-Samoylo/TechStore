@@ -6,12 +6,13 @@
 .catalog-container {
   width: 100%;
   background-color: #F9FAFB;
-  max-width: 1280px; 
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 32px; 
+  padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 32px;
+  box-sizing: border-box;
 }
 
 .catalog-header {
@@ -56,6 +57,109 @@
 .catalog-grid {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+}
+
+.catalog-filters-drawer {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .catalog-container {
+    padding: 32px 24px;
+    gap: 32px;
+  }
+
+  .catalog-content-wrapper {
+    display: block;
+  }
+
+  .catalog-sidebar {
+    display: none;
+  }
+
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .catalog-filters-drawer {
+    display: block;
+  }
+
+  .catalog-filters-drawer__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.2s ease;
+    z-index: 199;
+  }
+
+  .catalog-filters-drawer__panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 281px;
+    max-width: 281px;
+    height: 100vh;
+    background: #FFFFFF;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    z-index: 200;
+    overflow-y: auto;
+    box-shadow:
+      0px 1px 2px rgba(0, 0, 0, 0.05),
+      0px 4px 6px -4px rgba(0, 0, 0, 0.1),
+      0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .catalog-filters-drawer--open .catalog-filters-drawer__overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .catalog-filters-drawer--open .catalog-filters-drawer__panel {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .catalog-container {
+    padding: 32px 16px;
+    gap: 32px;
+  }
+
+  .catalog-header {
+    gap: 8px;
+  }
+
+  .catalog-title {
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 0.07px;
+  }
+
+  .catalog-description {
+    max-width: 336px;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.31px;
+  }
+
+  .catalog-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .catalog-filters-drawer__panel {
+    width: 281px;
+    max-width: 281px;
+  }
+}
+
+body.no-scroll {
+  overflow: hidden;
 }

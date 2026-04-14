@@ -1,6 +1,6 @@
 import React from 'react';
 import { RiMailLine, RiPhoneLine, RiMapPinLine, RiTimeLine } from 'react-icons/ri';
-import ContactItem from './ContactItem';
+import ContactItem from '../ContactItem/ContactItem';
 import './GetInTouch.css';
 
 const CONTACT_ITEMS = [
