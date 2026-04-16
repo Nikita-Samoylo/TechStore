@@ -12,7 +12,7 @@ const CartPage = () => {
   const [promoMessage, setPromoMessage] = useState({ type: '', text: '' }); 
 
   const handleApplyPromo = () => {
-    if (promoCode.trim().toUpperCase() === 'SAVE10') {
+    if (promoCode.trim() === 'SAVE10') {
       setDiscountPercent(10);
       setPromoMessage({ type: 'success', text: 'Promo code applied!' });
     } else if (promoCode.trim() === '') {
