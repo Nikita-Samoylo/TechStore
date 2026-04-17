@@ -1,6 +1,6 @@
 .product-card {
-  max-height: 464px;
-  max-width: 293.33px;
+  height: 100%;
+  width: 100%;
   background-color: #FFFFFF;
   border: 1px solid #E5E7EB;
   border-radius: 10px;
