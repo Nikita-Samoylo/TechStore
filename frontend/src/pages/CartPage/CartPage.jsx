@@ -26,14 +26,15 @@ const CartPage = () => {
   const isEmpty = cartItems.length === 0;
 
   const subtotalCents = cartItems.reduce((sum, item) => sum + item.product.price * item.qty, 0);
-  const discountCents = Math.round(subtotalCents * (discountPercent / 100));
-  const subtotalAfterDiscount = subtotalCents - discountCents;
   
   const taxRate = 0.08;
-  const taxCents = Math.round(subtotalAfterDiscount * taxRate);
+  const taxCents = Math.round(subtotalCents * taxRate);
   
-  const totalCents = subtotalAfterDiscount + taxCents;
+  const totalCents = subtotalCents + taxCents;
+  const discountCents = Math.round(totalCents * (discountPercent / 100));
 
+  const totalAfterDiscount=totalCents - discountCents;
+  
   const fmt = (cents) => `$${(cents / 100).toFixed(2)}`;
 
   return (
@@ -47,7 +48,7 @@ const CartPage = () => {
             subtotalCents={subtotalCents}
             discountCents={discountCents}
             taxCents={taxCents}
-            totalCents={totalCents}
+            totalCents={totalAfterDiscount}
             fmt={fmt}
             onUpdateQuantity={updateQuantity}
             onRemove={removeFromCart}
