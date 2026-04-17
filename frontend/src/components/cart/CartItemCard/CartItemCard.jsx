@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './CartItemCard.css';
 
 const CartItemCard = ({ item, fmt, onUpdateQuantity, onRemove }) => {
@@ -12,7 +13,9 @@ const CartItemCard = ({ item, fmt, onUpdateQuantity, onRemove }) => {
 
       <div className="cart-item__info">
         <div className="cart-item__meta">
-          <h2 className="cart-item__name">{product.name}</h2>
+          <Link to={`/product/${product.id}`} className="cart-item__name-link">
+            <h2 className="cart-item__name">{product.name}</h2>
+          </Link>
           <p className="cart-item__category">{product.category}</p>
         </div>
 
@@ -41,7 +44,7 @@ const CartItemCard = ({ item, fmt, onUpdateQuantity, onRemove }) => {
       </div>
 
       <div className="cart-item__price">
-        <p className="cart-item__price-main">{fmt(product.price)}</p>
+        <p className="cart-item__price-main">{fmt(product.price * qty)}</p>
         <p className="cart-item__price-sub">{fmt(product.price)} each</p>
       </div>
 

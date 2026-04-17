@@ -43,6 +43,12 @@
   min-width: 0;
 }
 
+/* --- ДОБАВЛЕННЫЕ СТИЛИ ДЛЯ НАЗВАНИЯ --- */
+.cart-item__name-link {
+  text-decoration: none; /* Убираем подчеркивание ссылки */
+  width: fit-content;    /* Чтобы ссылка была только по ширине текста */
+}
+
 .cart-item__name {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -51,7 +57,13 @@
   line-height: 24px;
   letter-spacing: -0.31px;
   color: #0A0A0A;
+  transition: color 0.2s ease; /* Плавная смена цвета */
 }
+
+.cart-item__name-link:hover .cart-item__name {
+  color: #155DFC; /* Синий цвет при наведении только на название */
+}
+/* -------------------------------------- */
 
 .cart-item__category {
   margin: 0;
@@ -88,7 +100,7 @@
   font-size: 16px;
   line-height: 24px;
   box-sizing: border-box;
-  cursor: default;
+  cursor: pointer;
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 

@@ -4,8 +4,8 @@
 
 .deal-item__badge {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: -12px;
+  right: -8px;
   z-index: 20;
   background: #DC2626;
   color: #FFFFFF;

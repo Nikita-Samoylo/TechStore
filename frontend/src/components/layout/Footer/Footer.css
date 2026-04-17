@@ -4,7 +4,7 @@
   padding-top: 48px;
   padding-bottom: 32px;
   width: 100%;
-  box-sizing: border-box; /* Защита от скролла */
+  box-sizing: border-box;
 }
 
 .footer_container {
@@ -23,7 +23,7 @@
 }
 
 .footer_col {
-  min-width: 0; /* Предотвращает раздувание */
+  min-width: 0;
 }
 
 .footer_logo {
@@ -67,7 +67,7 @@
   margin: 0 0 24px 0;
   color: #4A5565;
   letter-spacing: -0.15px;
-  max-width: 100%; /* ИСПРАВЛЕНО: не дает вылезать за экран */
+  max-width: 100%;
 }
 
 .footer_socials {
@@ -294,7 +294,7 @@
   }
 
   .footer_text {
-    max-width: 100%; /* ИСПРАВЛЕНО */
+    max-width: 100%;
     margin-bottom: 24px;
   }
 

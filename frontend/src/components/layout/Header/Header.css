@@ -20,7 +20,7 @@
   height: 100%;
   margin: 0 auto;
   box-sizing: border-box;
-  position: relative; /* Добавлено для фикса меню */
+  position: relative;
 }
 
 .header_wrapper {
@@ -199,13 +199,12 @@
     display: flex;
   }
 
-  /* ИСПРАВЛЕННЫЙ БЛОК: убран calc, вызывающий скролл */
   .header_mobile-menu {
     display: none;
-    width: 100%; /* Занимает ровно ширину экрана */
-    position: absolute; /* Чтобы не зависеть от паддингов родителя */
+    width: 100%;
+    position: absolute;
     top: 64px;
-    left: 0; /* Прижимаем к левому краю */
+    left: 0;
     background: #FFFFFF;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow:
