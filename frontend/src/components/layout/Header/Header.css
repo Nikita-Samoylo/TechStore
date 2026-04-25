@@ -1,6 +1,7 @@
 .header {
   width: 100%;
-  height: 65px;
+  min-height: 65px;
+  height: auto; 
   background-color: #FFFFFF;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow:
@@ -17,17 +18,18 @@
   width: 100%;
   max-width: 1280px;
   padding: 0 32px;
-  height: 100%;
   margin: 0 auto;
   box-sizing: border-box;
-  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .header_wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
+  flex: 0 0 65px; 
+  height: 65px;
 }
 
 .header_logo {
@@ -143,33 +145,48 @@
 
 .header_mobile-menu {
   display: none;
+  width: 100%;
+  position: relative; 
+  background: #FFFFFF;
+  border-top: 1px solid rgba(0, 0, 0, 0.1); 
+  padding: 16px 0 20px 0;
+  z-index: 1000;
+}
+
+.header_mobile-menu--open {
+  display: block;
+}
+
+.header_mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0;
+}
+
+.header_mobile-link {
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.31px;
+  color: #364153;
+}
+
+.header_mobile-link:hover {
+  color: #155DFC;
 }
 
 @media (max-width: 1024px) {
   .header_container {
     padding: 0 24px;
   }
-
-  .header_nav {
-    gap: 20px;
-  }
-
-  .header_link {
-    font-size: 15px;
-  }
-
-  .header_actions {
-    gap: 12px;
-  }
-
-  .header_logo-text {
-    font-size: 18px;
-  }
+  .header_nav { gap: 20px; }
 }
 
 @media (max-width: 768px) {
   .header {
-    height: auto;
     min-height: 64px;
   }
 
@@ -197,47 +214,5 @@
 
   .header_menu-btn {
     display: flex;
-  }
-
-  .header_mobile-menu {
-    display: none;
-    width: 100%;
-    position: absolute;
-    top: 64px;
-    left: 0;
-    background: #FFFFFF;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow:
-      0px 1px 3px 0px rgba(0, 0, 0, 0.1),
-      0px 1px 2px -1px rgba(0, 0, 0, 0.1);
-
-    padding: 16px 0 20px 0;
-    z-index: 1000;
-  }
-
-  .header_mobile-menu--open {
-    display: block;
-  }
-
-  .header_mobile-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    padding: 0 16px;
-    box-sizing: border-box;
-  }
-
-  .header_mobile-link {
-    text-decoration: none;
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: -0.31px;
-    color: #364153;
-  }
-
-  .header_mobile-link:hover {
-    color: #155DFC;
   }
 }
