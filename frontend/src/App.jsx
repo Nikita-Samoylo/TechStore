@@ -8,6 +8,7 @@ import DealsPage from './pages/DealsPage/DealsPage.jsx';
 import Header from './components/layout/Header/Header';
 import Footer from './components/layout/Footer/Footer';
 import { CartProvider } from './context/CartContext';
+import AuthPage from './components/auth/AuthPage.jsx';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/deals" element={<DealsPage />} />
+          <Route path="/login" element={<AuthPage />} />
         </Routes>
       </main>
       <Footer />
