@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   RiSearchLine,
   RiShoppingCartLine,
@@ -11,11 +11,26 @@ import "./Header.css";
 const Header = () => {
   const { cartItems } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token');
 
   const cartCount = cartItems.reduce((sum, item) => sum + item.qty, 0);
 
   const closeMenu = () => setIsMenuOpen(false);
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    navigate('/login');
+    window.location.reload();
+  };
+
+  const handleLoginRedirect = () => {
+    navigate('/login');
+    closeMenu();
+  };
 
   return (
     <header className="header">
@@ -34,6 +49,16 @@ const Header = () => {
           </nav>
 
           <div className="header_actions">
+            {token ? (
+              <button onClick={handleLogout} className="header_auth-btn header_auth-btn--logout">
+                Выйти
+              </button>
+            ) : (
+              <button onClick={handleLoginRedirect} className="header_auth-btn">
+                Войти
+              </button>
+            )}
+
             <button className="header_btn" aria-label="Search">
               <RiSearchLine className="header_icon" />
             </button>
@@ -65,6 +90,16 @@ const Header = () => {
             <Link to="/categories" className="header_mobile-link" onClick={closeMenu}>Categories</Link>
             <Link to="/deals" className="header_mobile-link" onClick={closeMenu}>Deals</Link>
             <Link to="/about" className="header_mobile-link" onClick={closeMenu}>About</Link>
+            
+            {token ? (
+              <span onClick={() => { handleLogout(); closeMenu(); }} className="header_mobile-link header_mobile-auth--logout">
+                Выйти
+              </span>
+            ) : (
+              <span onClick={handleLoginRedirect} className="header_mobile-link header_mobile-auth--login">
+                Войти в аккаунт
+              </span>
+            )}
           </nav>
         </div>
       </div>

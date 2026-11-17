@@ -1,13 +1,40 @@
-import React, { useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import DealsBanner from '../../components/deals/DealsBanner/DealsBanner';
 import DealsGrid from '../../components/deals/DealsGrid/DealsGrid';
-import { products } from '../../data/products';
+import { fetchProducts } from '../../api/api';
 import './DealsPage.css';
 
 const DealsPage = () => {
   const discountPercent = 20;
-  const dealProducts = useMemo(() => products.slice(1, 5), []);
+  const [dealProducts, setDealProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let isCancelled = false;
+
+    const loadDeals = async () => {
+      try {
+        setLoading(true);
+        const data = await fetchProducts({ limit: 6 });
+        if (!isCancelled) {
+          setDealProducts(data.items.slice(0, 4));
+        }
+      } catch (error) {
+        console.error('Ошибка при загрузке акционных товаров:', error);
+      } finally {
+        if (!isCancelled) {
+          setLoading(false);
+        }
+      }
+    };
+
+    loadDeals();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, []);
 
   return (
     <div className="deals-page">
@@ -48,7 +75,11 @@ const DealsPage = () => {
 
         <DealsBanner />
 
-        <DealsGrid products={dealProducts} discountPercent={discountPercent} />
+        {loading ? (
+          <p style={{ textAlign: 'center', margin: '40px 0' }}>Loading special deals...</p>
+        ) : (
+          <DealsGrid products={dealProducts} discountPercent={discountPercent} />
+        )}
 
         <section className="deals-cta">
           <p className="deals-cta__text">Want to see more products?</p>
