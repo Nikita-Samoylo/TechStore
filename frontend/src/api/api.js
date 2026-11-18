@@ -33,7 +33,8 @@ function getAuthHeaders(isFormData = false) {
 }
 
 // --- ТОВАРЫ ---
-export async function fetchProducts(params = {}) {
+// --- ТОВАРЫ ---
+export async function fetchProducts(params = {}, options = {}) {
   const query = new URLSearchParams();
   Object.entries(params).forEach(([key, val]) => {
     if (val !== undefined && val !== '' && val !== null) {
@@ -41,7 +42,11 @@ export async function fetchProducts(params = {}) {
     }
   });
 
-  const res = await fetch(`${API_URL}/products?${query.toString()}`);
+  // ДОБАВЛЕНО: передаем signal в fetch
+  const res = await fetch(`${API_URL}/products?${query.toString()}`, {
+    signal: options.signal, 
+  });
+  
   const data = await res.json();
   if (!res.ok) throw new Error(data.error || 'Ошибка загрузки каталога');
 
