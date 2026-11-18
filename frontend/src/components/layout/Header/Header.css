@@ -119,6 +119,40 @@
   border-color: #FCA5A5;
 }
 
+/* ── СТИЛИ ДЛЯ ПОИСКА ── */
+.header_search {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.header_search--open {
+  background-color: #F3F4F6;
+  padding-left: 12px;
+}
+
+.header_search-input {
+  width: 0;
+  opacity: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #0A0A0A;
+  transition: all 0.3s ease;
+}
+
+.header_search--open .header_search-input {
+  width: 180px;
+  opacity: 1;
+  padding: 8px 0;
+}
+/* ──────────────────────── */
+
 .header_btn {
   width: 40px;
   height: 40px;
@@ -257,5 +291,10 @@
 
   .header_menu-btn {
     display: flex;
+  }
+
+  /* Уменьшаем ширину поиска на мобильных */
+  .header_search--open .header_search-input {
+    width: 120px;
   }
 }
