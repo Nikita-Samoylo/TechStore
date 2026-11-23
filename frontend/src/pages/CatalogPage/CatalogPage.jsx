@@ -1,11 +1,27 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Filters from '../../components/catalog/Filters/Filters';
 import ProductCard from '../../components/catalog/ProductCard/ProductCard';
 import CatalogTopBar from '../../components/catalog/CatalogTopBar/CatalogTopBar';
-import { products } from '../../data/products';
+import { fetchProducts } from '../../api/api';
 import './CatalogPage.css';
 
 const CatalogPage = () => {
+  const [searchParams] = useSearchParams();
+  const urlSearch = searchParams.get('search') || '';
+
+  const [products, setProducts] = useState([]);
+  const [meta, setMeta] = useState({
+    total_items: 0,
+    total_pages: 1,
+    current_page: 1,
+    limit: 12,
+  });
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [retryTrigger, setRetryTrigger] = useState(0);
+
   const [sortOption, setSortOption] = useState('name-asc');
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
@@ -14,48 +30,90 @@ const CatalogPage = () => {
     priceMin: 0,
     priceMax: 3000,
   });
+  const [debouncedFilters, setDebouncedFilters] = useState(filters);
 
   useEffect(() => {
-    if (isFiltersOpen) {
-      document.body.classList.add('no-scroll');
-    } else {
-      document.body.classList.remove('no-scroll');
-    }
+    const timer = setTimeout(() => setDebouncedFilters(filters), 400);
+    return () => clearTimeout(timer);
+  }, [filters]);
 
-    return () => {
-      document.body.classList.remove('no-scroll');
-    };
+  useEffect(() => {
+    document.body.classList.toggle('no-scroll', isFiltersOpen);
+    return () => document.body.classList.remove('no-scroll');
   }, [isFiltersOpen]);
 
-  const displayedProducts = useMemo(() => {
-    let result = [...products];
+  useEffect(() => {
+    setPage(1);
+  }, [urlSearch]);
 
-    result = result.filter(
-      (p) => p.price >= filters.priceMin * 100 && p.price <= filters.priceMax * 100
-    );
+  const changeFilters = (newFilters) => {
+    setPage(1);
+    setFilters(newFilters);
+  };
 
-    if (filters.selectedRatings.length > 0) {
-      const minRequiredRating = Math.min(...filters.selectedRatings);
-      result = result.filter((p) => p.rating >= minRequiredRating);
-    }
+  const changeSort = (newSort) => {
+    setPage(1);
+    setSortOption(newSort);
+  };
 
-    result.sort((a, b) => {
-      switch (sortOption) {
-        case 'name-asc':
-          return a.name.localeCompare(b.name);
-        case 'name-desc':
-          return b.name.localeCompare(a.name);
-        case 'price-asc':
-          return a.price - b.price;
-        case 'price-desc':
-          return b.price - a.price;
-        default:
-          return 0;
+  useEffect(() => {
+    const controller = new AbortController();
+    let isCancelled = false;
+
+    const loadProducts = async (attempt = 0) => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const [rawField, order] = sortOption.split('-');
+        const sort_by = rawField === 'name' ? 'title' : rawField;
+
+        const min_rating =
+          debouncedFilters.selectedRatings.length > 0
+            ? Math.min(...debouncedFilters.selectedRatings)
+            : undefined;
+
+        const data = await fetchProducts({
+          page,
+          limit: 12,
+          min_price: debouncedFilters.priceMin * 100,
+          max_price: debouncedFilters.priceMax * 100,
+          min_rating,
+          sort_by,
+          order,
+          search: urlSearch,
+        }, { signal: controller.signal });
+
+        if (!isCancelled) {
+          setProducts(data.items);
+          setMeta(data.meta);
+        }
+      } catch (err) {
+        if (err.name === 'AbortError') return;
+
+        if (attempt < 1 && !isCancelled) {
+          console.warn('Ошибка загрузки, повторяем...');
+          setTimeout(() => loadProducts(attempt + 1), 1000);
+          return;
+        }
+
+        if (!isCancelled) {
+          setError('Не удалось загрузить товары');
+        }
+      } finally {
+        if (!isCancelled) {
+          setLoading(false);
+        }
       }
-    });
+    };
 
-    return result;
-  }, [sortOption, filters]);
+    loadProducts();
+
+    return () => {
+      isCancelled = true;
+      controller.abort();
+    };
+  }, [page, sortOption, debouncedFilters, retryTrigger, urlSearch]);
 
   return (
     <div className="catalog-page">
@@ -68,20 +126,34 @@ const CatalogPage = () => {
         </div>
 
         <CatalogTopBar
-          productsCount={displayedProducts.length}
+          productsCount={meta.total_items}
           currentSort={sortOption}
-          onSortChange={setSortOption}
+          onSortChange={changeSort}
           onOpenFilters={() => setIsFiltersOpen(true)}
         />
 
         <div className="catalog-content-wrapper">
           <aside className="catalog-sidebar">
-            <Filters filters={filters} setFilters={setFilters} />
+            <Filters filters={filters} setFilters={changeFilters} />
           </aside>
 
           <main className="catalog-grid">
-            {displayedProducts.length > 0 ? (
-              displayedProducts.map((product) => (
+            {loading ? (
+              <p style={{ gridColumn: '1 / -1', textAlign: 'center', marginTop: '40px' }}>
+                Loading products...
+              </p>
+            ) : error ? (
+              <div style={{ gridColumn: '1 / -1', textAlign: 'center', marginTop: '40px' }}>
+                <p>{error}</p>
+                <button 
+                  onClick={() => setRetryTrigger(prev => prev + 1)}
+                  style={{ marginTop: '10px', padding: '8px 16px', cursor: 'pointer' }}
+                >
+                  Повторить
+                </button>
+              </div>
+            ) : products.length > 0 ? (
+              products.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))
             ) : (
@@ -91,6 +163,27 @@ const CatalogPage = () => {
             )}
           </main>
         </div>
+
+        {meta.total_pages > 1 && (
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '32px' }}>
+            {Array.from({ length: meta.total_pages }, (_, idx) => idx + 1).map((pageNum) => (
+              <button
+                key={pageNum}
+                onClick={() => setPage(pageNum)}
+                style={{
+                  padding: '8px 14px',
+                  borderRadius: '6px',
+                  border: '1px solid #ccc',
+                  background: pageNum === meta.current_page ? '#111' : '#fff',
+                  color: pageNum === meta.current_page ? '#fff' : '#111',
+                  cursor: 'pointer',
+                }}
+              >
+                {pageNum}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className={`catalog-filters-drawer ${isFiltersOpen ? 'catalog-filters-drawer--open' : ''}`}>
@@ -101,7 +194,7 @@ const CatalogPage = () => {
         <div className="catalog-filters-drawer__panel">
           <Filters
             filters={filters}
-            setFilters={setFilters}
+            setFilters={changeFilters}
             isMobile
             onClose={() => setIsFiltersOpen(false)}
           />
